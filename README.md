@@ -9,7 +9,7 @@ Tiny href click handler library.
 var nanohref = require('nanohref')
 
 nanohref(function (location) {
-  console.log('new location is', location)
+  console.log('new location is', location.pathname)
 })
 
 // Create DOM node
@@ -17,6 +17,10 @@ var el = document.createElement('a')
 el.setAttribute('href', '/my-link')
 el.innerText = 'Click me'
 document.body.appendChild(el)
+
+// Trigger click
+el.click()
+// => "new location is /my-link"
 ```
 
 ## API
