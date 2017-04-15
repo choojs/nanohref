@@ -8,6 +8,7 @@ Tiny href click handler library.
 ```js
 var nanohref = require('nanohref')
 
+// Handler automatically attached to window.document
 nanohref(function (location) {
   console.log('new location is', location.pathname)
 })
