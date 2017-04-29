@@ -12,7 +12,7 @@ function href (cb, root) {
   assert.equal(typeof cb, 'function', 'nanohref: cb must be type function')
   root = root || window.document
 
-  window.onclick = function (e) {
+  window.addEventListener('click', function (e) {
     if ((e.button && e.button !== 0) || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
 
     var node = (function traverse (node) {
@@ -30,5 +30,5 @@ function href (cb, root) {
 
     e.preventDefault()
     cb(node)
-  }
+  })
 }
