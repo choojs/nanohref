@@ -10,6 +10,7 @@ var noRoutingAttrName = 'data-no-routing'
 // (fn(str), obj?) -> undefined
 function href (cb, root) {
   assert.equal(typeof cb, 'function', 'nanohref: cb must be type function')
+  if (typeof window === 'undefined') return
   root = root || window.document
 
   window.addEventListener('click', function (e) {
