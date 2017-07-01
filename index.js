@@ -1,41 +1,40 @@
 var assert = require('assert')
 
+var safeExternalLink = /[noopener|noreferrer] [noopener|noreferrer]/
+var protocolLink = /^[\w-_]+:/
+
 module.exports = href
 
-var noRoutingAttrName = 'data-no-routing'
-
-// handle a click if is anchor tag with an href
-// and url lives on the same domain. Replaces
-// trailing '#' so empty links work as expected.
-// (fn(str), obj?) -> undefined
 function href (cb, root) {
-  assert.equal(typeof cb, 'function', 'nanohref: cb must be type function')
+  assert.notEqual(typeof window, 'undefined', 'nanohref: expected window to exist')
+
   root = root || window.document
 
-  window.addEventListener('click', function (e) {
-    if ((e.button && e.button !== 0) || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
+  assert.equal(typeof cb, 'function', 'nanohref: cb should be type function')
+  assert.equal(typeof root, 'object', 'nanohref: root should be type object')
 
-    var node = (function traverse (node) {
+  window.addEventListener('click', function (e) {
+    if ((e.button && e.button !== 0) ||
+      e.ctrlKey || e.metaKey || e.altKey || e.shiftKey ||
+      e.defaultPrevented) return
+
+    var anchor = (function traverse (node) {
       if (!node || node === root) return
-      if (node.localName !== 'a') return traverse(node.parentNode)
-      if (node.href === undefined) return traverse(node.parentNode)
-      if (!sameOrigin(node.href)) return
+      if (node.localName !== 'a' || node.href === undefined) {
+        return traverse(node.parentNode)
+      }
       return node
     })(e.target)
 
-    if (!node) return
+    if (!anchor) return
 
-    var isRoutingDisabled = node.hasAttribute(noRoutingAttrName)
-    if (isRoutingDisabled) return
+    if (window.location.origin !== anchor.origin ||
+      anchor.hasAttribute('download') ||
+      (anchor.getAttribute('target') === '_blank' &&
+        safeExternalLink.test(anchor.getAttribute('rel'))) ||
+      protocolLink.test(anchor.getAttribute('href'))) return
 
     e.preventDefault()
-    cb(node)
+    cb(anchor)
   })
-}
-
-function sameOrigin (href) {
-  var location = window.location
-  var origin = location.protocol + '//' + location.hostname
-  if (location.port) origin += ':' + location.port
-  return (href && (href.indexOf(origin) === 0))
 }
