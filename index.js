@@ -1,6 +1,6 @@
 var assert = require('assert')
 
-var safeExternalLink = /[noopener|noreferrer] [noopener|noreferrer]/
+var safeExternalLink = /(noopener|noreferrer) (noopener|noreferrer)/
 var protocolLink = /^[\w-_]+:/
 
 module.exports = href
