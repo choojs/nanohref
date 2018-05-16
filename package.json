@@ -4,12 +4,17 @@
   "repository": "yoshuawuyts/nanohref",
   "version": "3.0.1",
   "scripts": {
-    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "deps": "dependency-check . && dependency-check . --extra --no-dev -i nanoassert",
     "start": "node .",
     "test": "standard && npm run deps",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov"
   },
-  "dependencies": {},
+  "browser": {
+    "assert": "nanoassert"
+  },
+  "dependencies": {
+    "nanoassert": "^1.1.0"
+  },
   "devDependencies": {
     "dependency-check": "^2.8.0",
     "nyc": "^10.2.0",
