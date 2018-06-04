@@ -28,7 +28,10 @@ function href (cb, root) {
 
     if (!anchor) return
 
-    if (window.location.origin !== anchor.origin ||
+    if (window.location.protocol !== anchor.protocol ||
+        window.location.hostname !== anchor.hostname ||
+        window.location.pathname !== anchor.pathname ||
+        window.location.port !== anchor.port ||
       anchor.hasAttribute('download') ||
       (anchor.getAttribute('target') === '_blank' &&
         safeExternalLink.test(anchor.getAttribute('rel'))) ||
