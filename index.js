@@ -30,7 +30,6 @@ function href (cb, root) {
 
     if (window.location.protocol !== anchor.protocol ||
         window.location.hostname !== anchor.hostname ||
-        window.location.pathname !== anchor.pathname ||
         window.location.port !== anchor.port ||
       anchor.hasAttribute('download') ||
       (anchor.getAttribute('target') === '_blank' &&
