@@ -2,7 +2,7 @@
   "name": "nanohref",
   "description": "Tiny href click handler library",
   "repository": "yoshuawuyts/nanohref",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --extra --no-dev -i nanoassert",
     "start": "node .",
