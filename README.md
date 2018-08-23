@@ -35,7 +35,7 @@ following conditions:
 - the link points to a different host
 - the link has a `download` attribute
 
-:warn: Note that we only handle `target=_blank` if they also have
+:warning: Note that we only handle `target=_blank` if they also have
 `rel="noopener noreferrer"` on them. This is needed to [properly sandbox web
 pages](https://mathiasbynens.github.io/rel-noopener/). Once `noopener` [becomes
 more widespread](http://caniuse.com/#feat=rel-noopener), we can drop
@@ -58,10 +58,10 @@ which defaults to `window.document`.
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
 [2]: https://img.shields.io/npm/v/nanohref.svg?style=flat-square
 [3]: https://npmjs.org/package/nanohref
-[4]: https://img.shields.io/travis/yoshuawuyts/nanohref/master.svg?style=flat-square
-[5]: https://travis-ci.org/yoshuawuyts/nanohref
-[6]: https://img.shields.io/codecov/c/github/yoshuawuyts/nanohref/master.svg?style=flat-square
-[7]: https://codecov.io/github/yoshuawuyts/nanohref
+[4]: https://img.shields.io/travis/choojs/nanohref/master.svg?style=flat-square
+[5]: https://travis-ci.org/choojs/nanohref
+[6]: https://img.shields.io/codecov/c/github/choojs/nanohref/master.svg?style=flat-square
+[7]: https://codecov.io/github/choojs/nanohref
 [8]: http://img.shields.io/npm/dm/nanohref.svg?style=flat-square
 [9]: https://npmjs.org/package/nanohref
 [10]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
