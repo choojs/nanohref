@@ -28,6 +28,7 @@ el.click()
 By default all href links are handled. The event is not handled under the
 following conditions:
 - the click event had `.preventDefault()` called on it
+- the link has a `data-nanohref-ignore` attribute
 - the link has a `target="_blank"` attribute with `rel="noopener noreferrer"`
 - a modifier key is enabled (e.g. `ctrl`, `alt`, `shift` or `meta`)
 - the link's href starts with protocol handler such as `mailto:` or `dat:`

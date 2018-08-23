@@ -31,6 +31,7 @@ function href (cb, root) {
     if (window.location.protocol !== anchor.protocol ||
         window.location.hostname !== anchor.hostname ||
         window.location.port !== anchor.port ||
+      anchor.hasAttribute('data-nanohref-ignore') ||
       anchor.hasAttribute('download') ||
       (anchor.getAttribute('target') === '_blank' &&
         safeExternalLink.test(anchor.getAttribute('rel'))) ||
