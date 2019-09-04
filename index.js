@@ -16,7 +16,7 @@ function href (cb, root) {
   window.addEventListener('click', function (e) {
     if ((e.button && e.button !== 0) ||
       e.ctrlKey || e.metaKey || e.altKey || e.shiftKey ||
-      e.defaultPrevented) return
+      e.defaultPrevented || !root.contains(e.target)) return
 
     var anchor = (function traverse (node) {
       if (!node || node === root) return
